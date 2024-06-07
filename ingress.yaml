@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+  generation: 1
+  name: argo-workflows-server
+  namespace: argo
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: argo.adiatma.tech
+    http:
+      paths:
+      - backend:
+          service:
+            name: argo-workflows-server
+            port:
+              number: 2746
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - argo.adiatma.tech
+    secretName: argo.adiatma.tech
