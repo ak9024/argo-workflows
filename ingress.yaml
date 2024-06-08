@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-  generation: 1
   name: argo-workflows-server
   namespace: argo
 spec:
